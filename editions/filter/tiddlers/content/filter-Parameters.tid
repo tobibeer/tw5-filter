@@ -1,6 +1,6 @@
 created: 20151221061040268
 creator: Tobias Beer
-modified: 20151221091325763
+modified: 20151221092057183
 tags: 
 title: filter-Parameters
 type: text/vnd.tiddlywiki
@@ -28,3 +28,12 @@ For the ''filter[]'' operator you can specify...
 : evaluates the ''subfilter'' against each input title in turn, passing the variable `item` and returning all those input titles for which the ''subfilter'' returned output titles
 ; `[filter:$all item{subfilter}]`
 : evaluates the ''subfilter'' against each input title in turn, passing the variable `item` and returning all input if for any of them the ''subfilter'' returned output titles
+
+!! $ or no $
+
+The difference between using a ''$'' flag and not using one is:
+
+; $...
+: the output is always a subset of the input titles, including "none"
+; no $...
+: retrieves the output based on input titles, but does not (necessarily) contain those
