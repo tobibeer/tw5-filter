@@ -1,0 +1,61 @@
+created: 20151221060854343
+creator: Tobias Beer
+modified: 20151221085153155
+tags: 
+title: filter-Examples
+type: text/vnd.tiddlywiki
+
+<$vars link-test="[backlinks[]]" var-test="[backlinks[]links<item>]">
+
+!! Before We Begin
+
+// Here are two variables we're going to use in the examples as subfilters://
+
+; link-test
+: <code><<link-test>></code>
+; var-test
+: <code><$text text=<<var-test>>/></code>
+
+// For verification let's fetch all tiddlers that are backlinks to those prefixed `filter`://
+
+<<` """{{{ [prefix[filter]backlinks[]] }}}""">>
+
+!! Simple Subfilter
+
+// Let's evaluate a subfilter expression to retrieve backlinks of tiddlers prefixed `filter`: //
+
+<<` """{{{ [prefix[filter]filter<link-test>] }}}""">>
+
+!! Subfilter $
+
+// Here we retrieve the tiddlers for which the subfilter has matches, those with backlinks: //
+
+<<` """{{{ [prefix[filter]filter:$<link-test>] }}}""">>
+
+!! Subfilter $all
+
+// Now we're checking that subfilter against all prefixed `filter`, however returning all input titles, should any have backlinks: //
+
+<<` """{{{ [prefix[filter]filter:$all<link-test>] }}}""">>
+
+!! Parametric Subfilter
+
+// When evaluating the subfilter `[backlinks[]links<item>]`, set the variable `item` to each input title in turn, fetching titles linked by backlinks of any tiddler prefixed `filter`://
+
+<<` """{{{ [prefix[filter]filter:item<var-test>] }}}""">>
+
+@@.note
+''Note:'' Do you remember from up above which tiddler was the only one that was a backlink to any other tiddler prefixed `filter`? That's the one having the above links.
+@@
+
+!! Parametric Subfilter $
+
+// Here, instead of the linked tiddlers, we retrieve the titles of tiddlers prefixed `filter` where any of their backlinks link to other tiddlers: //
+
+<<` """{{{ [prefix[filter]filter:$ item<var-test>] }}}""">>
+
+!! Parametric Subfilter $all
+
+// Finally, we retrieve all tiddlers prefixed `filter` should any of them have backlinks that themselves link anywhere: //
+
+<<` """{{{ [prefix[filter]filter:$all item<var-test>] }}}""">>

@@ -1,0 +1,24 @@
+title: $:/plugins/tobibeer/filter/readme
+
+The plugin $:/plugins/tobibeer/filter provides:
+
+; filter[]
+: a filter allowing to evaluate subfilters in a filter expression
+
+!!Syntax Variants
+
+; `[filter<subfilter>]`
+: evaluate ''subfilter'' against input titles
+; `[filter{subfilter}]`
+: retrieving the subfilter from a text-reference
+; `[filter:item<subfilter>]`
+: set variable `item` to each input title in turn
+; `[filter:$ item<subfilter>]`
+: return input titles with matches
+; `[filter:$all item{subfilter}]`
+: return all input titles if any had matches
+
+<br/>
+
+; documentation / examples / demos...
+: http://tobibeer.github.io/tw5-plugins#filter

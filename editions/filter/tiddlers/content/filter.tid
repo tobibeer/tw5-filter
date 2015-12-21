@@ -1,0 +1,9 @@
+created: 20151221060823167
+creator: Tobias Beer
+modified: 20151221061648035
+tabs: Info Parameters Examples Install
+tags: Plugins Filters Macros Widgets
+title: filter
+type: text/vnd.tiddlywiki
+
+<<plugin-docs filter>>

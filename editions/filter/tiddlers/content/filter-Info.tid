@@ -1,0 +1,20 @@
+created: 20151221060748553
+creator: Tobias Beer
+modified: 20151221090035922
+tags: 
+title: filter-Info
+type: text/vnd.tiddlywiki
+
+The plugin $:/plugins/tobibeer/filter provides:
+
+; filter[]
+: a filter allowing to evaluate subfilters in a filter expression
+: hop over to the [[examples|filter-Examples]] to see how it works
+
+!! Why?
+
+* to avoid having to nest list widgets in list widgets
+** that may not even allow you to retrieve the same aggregated results
+* to avail nested filters to the set widget or [[setvars]]
+
+<<plugin-docs-cp filter>>
