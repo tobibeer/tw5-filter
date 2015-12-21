@@ -1,17 +1,18 @@
 created: 20151221061040268
 creator: Tobias Beer
-modified: 20151221092057183
+modified: 20151221112344286
 tags: 
 title: filter-Parameters
 type: text/vnd.tiddlywiki
 
-For the ''filter[]'' operator you can specify...
+For the ''filter[]'' operator `filter:<suffix>[<operand>]` you can specify...
 
 ; operand:
-: a ''subfilter'' to be evaluated, usually passed as a <<x Variables variable>> or <<x TextReference text-reference>>
-; suffix:
+: optional, a ''subfilter'' to be evaluated, usually passed as a <<x Variables variable>> or <<x TextReference text-reference>>
+; suffix
+: optional, an of...
 : `<variable-name>`
-:: optional, sets the variable to each input title in turn when evaluating the ''subfilter''
+:: sets the variable to each input title in turn when evaluating the ''subfilter''
 :: best use simple words, never use the prefix `$`
 : `$`
 :: returns all those input titles for which the ''subfilter'' returned output titles in turn
