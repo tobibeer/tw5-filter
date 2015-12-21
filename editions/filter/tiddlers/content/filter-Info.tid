@@ -15,6 +15,6 @@ The plugin $:/plugins/tobibeer/filter provides:
 
 * to avoid having to nest list widgets in list widgets
 ** that may not even allow you to retrieve the same aggregated results
-* to avail nested filters to the set widget or [[setvars]]
+* to avail nested filters to the <<x SetWidget>> or [[setvars]]
 
 <<plugin-docs-cp filter>>
