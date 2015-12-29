@@ -1,0 +1,24 @@
+created: 20151228210501100
+creator: Tobias Beer
+modified: 20151229085648850
+modifier: Tobias Beer
+tags: 
+title: filter-Evaluation
+type: text/vnd.tiddlywiki
+
+The subfilter is always evaluated for each input title in turn with a given variable set to the currently processed title, e.g. ''inputTitle''. There are three ways to define the ''source'' of tiddlers against which the subfilter is evaluated: 
+
+; 1. each input title
+: by default, the subfilter in the operand is evaluated against ''each'' input title in turn
+: `a b c +[filter<foo>]`
+:: //evaluates ''foo'' three times, each time given the respective input title as its source to iterate on//
+; 2. all input titles
+: using the ''input'' suffix, the subfilter is evaluated against ''all'' input titles for ''each'' input title in turn
+: `a b c +[filter:input<foo>]`
+:: //evaluates ''foo'' three times as well, each time given all three input title as the source to iterate on//
+; 3. any titles
+: the subfilter can be evaluated for each input title in turn against any arbitrary titles by using a "set-creating" filter such as the <<x "all Operator" "all operator">>
+:: another filter operator creating sets is [[make]]
+: `a b c +[filter<foo>]`
+:: //also evaluates ''foo'' three times; however, using `[all[tiddlers]]` within ''foo'' the subfilter is evaluated at each turn against any titles imaginable//
+:: the difference to ''1.'' is merely in how the subfilter is defined

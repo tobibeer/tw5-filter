@@ -10,7 +10,9 @@
         "tiddlywiki/snowwhite"
     ],
     "includeWikis": [
-        "../../../defaults/editions/defaults"
+        "../../../defaults/editions/defaults",
+
+        "../../../contains/editions/contains"
     ],
     "build": {
         "index": [

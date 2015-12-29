@@ -1,61 +1,106 @@
 created: 20151221060854343
 creator: Tobias Beer
-modified: 20151221085153155
+modified: 20151222140534736
 tags: 
+test: [<inputTitle>tags[]]
 title: filter-Examples
 type: text/vnd.tiddlywiki
 
-<$vars link-test="[backlinks[]]" var-test="[backlinks[]links<item>]">
+// This first example returns all tags of tiddlers prefixed `filter` using a subfilter retrieved from a text-reference, replacing the __default__ variable ''inputTitle'' with each input title in turn: //
 
-!! Before We Begin
+<<` """; subfilter
+: <$text text={{filter-Examples!!test}}/>
 
-// Here are two variables we're going to use in the examples as subfilters://
+{{{ [prefix[filter]filter{filter-Examples!!test}] }}}""">>
 
-; link-test
-: <code><<link-test>></code>
-; var-test
-: <code><$text text=<<var-test>>/></code>
+@@.note
+''Note:'' By default, the subfilter is given only the currently processed input title as its source. To pass all input titles to the subfilter, use the suffix ''input''; see further down. To access all tiddlers in a subfilter, start it by using the <<x "all Operator" "all[] filter operator">>, e.g.:<br/>
+`[all[tiddlers]!is[system]tag<inputTitle>]`
+@@
 
-// For verification let's fetch all tiddlers that are backlinks to those prefixed `filter`://
+<hr/>
+
+<$vars
+filter-listed="[list[!!tabs]]"
+filter-backlinks="[backlinks[]]"
+filter-tag="[tag<inputTitle>]" >
+
+// The next examples use the variable ''filter-backlinks'' as their subfilter: //
+
+> <code><<filter-backlinks>></code>
+
+// For verification, let's fetch all tiddlers that are backlinks to any prefixed `filter`://
 
 <<` """{{{ [prefix[filter]backlinks[]] }}}""">>
 
 !! Simple Subfilter
 
-// Let's evaluate a subfilter expression to retrieve backlinks of tiddlers prefixed `filter`: //
+// Evaluates a subfilter to retrieve backlinks of tiddlers prefixed `filter`: //
 
-<<` """{{{ [prefix[filter]filter<link-test>] }}}""">>
+<<` """{{{ [prefix[filter]filter<filter-backlinks>] }}}""">>
 
 !! Subfilter $
 
-// Here we retrieve the tiddlers for which the subfilter has matches, those with backlinks: //
+// Retrieves the tiddlers for which the subfilter has matches, those with backlinks: //
 
-<<` """{{{ [prefix[filter]filter:$<link-test>] }}}""">>
+<<` """{{{ [prefix[filter]filter:$<filter-backlinks>] }}}""">>
 
 !! Subfilter $all
 
-// Now we're checking that subfilter against all prefixed `filter`, however returning all input titles, should any have backlinks: //
+// Checks te subfilter against all prefixed `filter`, however returning all input titles, should any have backlinks: //
 
-<<` """{{{ [prefix[filter]filter:$all<link-test>] }}}""">>
+<<` """{{{ [prefix[filter]filter:$all<filter-backlinks>] }}}""">>
 
-!! Parametric Subfilter
+<hr/>
 
-// When evaluating the subfilter `[backlinks[]links<item>]`, set the variable `item` to each input title in turn, fetching titles linked by backlinks of any tiddler prefixed `filter`://
+// The next examples use the variable ''filter-listed'' as their subfilter: //
 
-<<` """{{{ [prefix[filter]filter:item<var-test>] }}}""">>
+> <code><$text text=<<filter-listed>>/></code>
+
+!! Subfilter Variable
+
+// When evaluating the subfilter, the variable ''currentTiddler'' is set to each input title in turn, fetching all titles listed in the ''tabs'' field of any tiddler prefixed `filter`://
+
+<<` """{{{ [prefix[filter]filter: var:currentTiddler<filter-listed>] }}}""">>
 
 @@.note
-''Note:'' Do you remember from up above which tiddler was the only one that was a backlink to any other tiddler prefixed `filter`? That's the one having the above links.
+''Note:'' By setting ''currentTiddler'' we define a different context for the list filter operator.
 @@
 
-!! Parametric Subfilter $
+!! Subfilter Variable $
 
-// Here, instead of the linked tiddlers, we retrieve the titles of tiddlers prefixed `filter` where any of their backlinks link to other tiddlers: //
+// Instead of titles listed in the ''tabs'' field, returns those input titles that have titles listed in it: //
 
-<<` """{{{ [prefix[filter]filter:$ item<var-test>] }}}""">>
+<<` """{{{ [prefix[filter]filter:$ var:currentTiddler<filter-listed>] }}}""">>
 
-!! Parametric Subfilter $all
+!! Subfilter Variable $all
 
-// Finally, we retrieve all tiddlers prefixed `filter` should any of them have backlinks that themselves link anywhere: //
+// Finally, returns all prefixed `filter` if any has titles listed in a ''tabs'' field: //
 
-<<` """{{{ [prefix[filter]filter:$all item<var-test>] }}}""">>
+<<` """{{{ [prefix[filter]filter:$all var:currentTiddler<filter-listed>] }}}""">>
+
+<hr/>
+
+// The next examples use the variable ''filter-tag'' as their subfilter: //
+
+> <code><$text text=<<filter-tag>>/></code>
+
+!! Subfilter Source Titles
+
+// Below, using the suffix ''input'', the subfilter is evaluated against all input titles, not just the currently iterated one. In the subfilter, the __default__ variable ''inputTitle'' is replaced with each input title in turn, fetching all input titles that are prefixed `contains` and have any other titles thus prefixed as a tag://
+
+<<` """{{{ [prefix[contains]filter:input<filter-tag>] }}}""">>
+
+!! Subfilter Source Titles $
+
+// Instead of the tagged tiddlers, returns those input titles where the filter had matches, i.e. titles that have other tiddlers prefixed `contains` tagging to them: //
+
+<<` """{{{ [prefix[contains]filter:$ input<filter-tag>] }}}""">>
+
+!! Subfilter Source Titles $all
+
+// Finally, rather than matches, returns all input titles if any had matches: //
+
+<<` """{{{ [prefix[contains]filter:$all input<filter-tag>] }}}""">>
+
+</$vars>

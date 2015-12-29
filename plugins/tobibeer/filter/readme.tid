@@ -8,15 +8,20 @@ The plugin $:/plugins/tobibeer/filter provides:
 !!Syntax Variants
 
 ; `[filter<subfilter>]`
-: evaluate ''subfilter'' against input titles
+: evaluates ''subfilter'' against each input title
+: sets the variable ''inputTitle'' to each title in turn
+: uses __each__ input title as the source for the subfilter
 ; `[filter{subfilter}]`
-: retrieving the subfilter from a text-reference
-; `[filter:item<subfilter>]`
-: set variable `item` to each input title in turn
-; `[filter:$ item<subfilter>]`
-: return input titles with matches
-; `[filter:$all item{subfilter}]`
-: return all input titles if any had matches
+: retrieves the subfilter from a text-reference
+; `[filter:input<subfilter>]`
+: uses __all__ input titles as the source for the subfilter
+; `[filter: var:item<subfilter>]`
+: sets variable ''item'' to each input title in turn
+; `[filter:$ var:item<subfilter>]`
+: returns input titles with matches, sets ''item''
+; `[filter:$all input{subfilter}]`
+: returns __all__ input titles if __any__ had matches
+: evaluates for each input title against __all__ input titles
 
 <br/>
 

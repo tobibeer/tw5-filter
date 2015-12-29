@@ -1,0 +1,19 @@
+created: 20151229083010471
+creator: Tobias Beer
+modified: 20151229085141883
+modifier: Tobias Beer
+tags: 
+title: filter-Syntax
+type: text/vnd.tiddlywiki
+
+The filter operator called ''filter'' is specified as follows:
+
+; operand
+: the <<x "Filter Step" operand>> specifies the subfilter to be evaluated
+:: use a variable or text reference as the operand to pass the subfilter
+::: `[filter<some-variable>]` — variable operand
+::: `[filter{tiddler!!field}]` — text-reference operand
+; suffixes
+: `input` — instead of the current input title (default), passes all input titles as the source to the subfilter when evaluating it with respect to each input title in turn
+: `$` — instead of titles returned by evaluating the subfilter for each input title in turn, returns any input titles for which the subfilter yielded matches
+: `$all` — if any of the input titles evaluated against the subfilter yielded any matches, then ''all'' input titles will be returned, unmodified

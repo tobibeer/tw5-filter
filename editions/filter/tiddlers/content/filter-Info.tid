@@ -1,6 +1,7 @@
 created: 20151221060748553
 creator: Tobias Beer
-modified: 20151221090035922
+modified: 20151229085746248
+modifier: Tobias Beer
 tags: 
 title: filter-Info
 type: text/vnd.tiddlywiki
@@ -9,12 +10,14 @@ The plugin $:/plugins/tobibeer/filter provides:
 
 ; filter[]
 : a filter allowing to evaluate subfilters in a filter expression
+: with respect to a given set of input titles
+: at each turn against different [[input sources|filter-Evaluation]] of titles
 : hop over to the [[examples|filter-Examples]] to see how it works
 
 !! Why?
 
 * to avoid having to nest list widgets in list widgets
-** that may not even allow you to retrieve the same aggregated results
-* to avail nested filters to the <<x SetWidget>> or [[setvars]]
+** that may not even allow to retrieve the same aggregated results
+* to avail nested filters to a single <<x SetWidget>> or [[setvars]] widget instance
 
 <<plugin-docs-cp filter>>
