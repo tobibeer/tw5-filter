@@ -1,7 +1,9 @@
 created: 20151221060854343
 creator: Tobias Beer
-modified: 20151222140534736
-tags: 
+modified: 20160107113220746
+modifier: Tobias Beer
+summary: examples for the filter operator [[filter]] for evaluating subfilters
+tags: filter Examples
 test: [<inputTitle>tags[]]
 title: filter-Examples
 type: text/vnd.tiddlywiki
