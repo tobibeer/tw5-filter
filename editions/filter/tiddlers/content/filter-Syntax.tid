@@ -1,6 +1,6 @@
 created: 20151229083010471
 creator: Tobias Beer
-modified: 20151229085141883
+modified: 20160108182713440
 modifier: Tobias Beer
 tags: 
 title: filter-Syntax
@@ -17,3 +17,8 @@ The filter operator called ''filter'' is specified as follows:
 : `input` — instead of the current input title (default), passes all input titles as the source to the subfilter when evaluating it with respect to each input title in turn
 : `$` — instead of titles returned by evaluating the subfilter for each input title in turn, returns any input titles for which the subfilter yielded matches
 : `$all` — if any of the input titles evaluated against the subfilter yielded any matches, then ''all'' input titles will be returned, unmodified
+: `var:var-name` — instead of ''inputTitle'', define a variable in which each input title is stored in turn
+; placeholders
+: `%variable-name%` — use this markup for placeholders of any context variables that can be used freely in the sub-filter
+:: so, you could do this: `[%prefix%%filter%:%suffix%%operand%]`
+:: not just via the core <<x "Filter Parameter" "indirect operand">> syntax: `[tag<tagName>]`

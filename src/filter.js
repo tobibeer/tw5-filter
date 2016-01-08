@@ -83,6 +83,10 @@ exports.filter = function(source,operator,options) {
 			// Replace variable placeholders in the filter
 			filter = widget.substituteVariableReferences(filter);
 		}
+		// Also replace any %variable% placeholder
+		filter = filter.replace(/%([^(\s\%]+)%/mg, function(match,v) {
+			return widget.getVariable(v,"");
+		});
 		// Retrieve matches for...
 		matches = $tw.wiki.filterTiddlers(
 			// Replaced subFilter

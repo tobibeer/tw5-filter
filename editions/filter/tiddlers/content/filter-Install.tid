@@ -1,6 +1,6 @@
 created: 20151221060906187
 creator: Tobias Beer
-modified: 20151229084307580
+modified: 20160108182003593
 modifier: Tobias Beer
 tags: 
 title: filter-Install
@@ -10,9 +10,11 @@ type: text/vnd.tiddlywiki
 
 !! Version History
 
-; 0.5.5 / 2016-12-29
+; 0.5.6 / 2016-01-08
+: variable placeholders for use anywhere via `%variable-name%`
+; 0.5.5 / 2015-12-29
 : first release
 :: fixes evaluation algorithm, build error
 :: added tests
-; 0.5.0 / 2016-12-21
+; 0.5.0 / 2015-12-21
 : initial version — retracted

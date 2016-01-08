@@ -1,6 +1,6 @@
 created: 20151221060854343
 creator: Tobias Beer
-modified: 20160107113220746
+modified: 20160108184023769
 modifier: Tobias Beer
 summary: examples for the filter operator [[filter]] for evaluating subfilters
 tags: filter Examples
@@ -19,6 +19,24 @@ type: text/vnd.tiddlywiki
 ''Note:'' By default, the subfilter is given only the currently processed input title as its source. To pass all input titles to the subfilter, use the suffix ''input''; see further down. To access all tiddlers in a subfilter, start it by using the <<x "all Operator" "all[] filter operator">>, e.g.:<br/>
 `[all[tiddlers]!is[system]tag<inputTitle>]`
 @@
+
+!! Using Context Variables
+
+// In this example a lot of context variables are replaced in the subfilter://
+
+<$macrocall $name="`" text="""<$vars
+prefix="!"
+filter="field"
+suffix="title"
+operand="filter"
+subfilter="[%prefix%%filter%:%suffix%[%operand%]]">
+
+{{{ [prefix[filter]filter<subfilter>] }}}
+
+vs:
+
+{{{ [prefix[filter]] }}}
+</$vars>"""/>
 
 <hr/>
 

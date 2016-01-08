@@ -23,6 +23,11 @@ The plugin $:/plugins/tobibeer/filter provides:
 : returns __all__ input titles if __any__ had matches
 : evaluates for each input title against __all__ input titles
 
+!! Placeholders
+
+; `%variable-name%`
+: replace context variables in the subfilter, incl. `%inputTitle%`
+
 <br/>
 
 ; documentation / examples / demos...
