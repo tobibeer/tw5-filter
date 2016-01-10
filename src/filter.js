@@ -18,6 +18,8 @@ Filters tiddlers based on a filter expression given in the operand.
 The filter filter function...
 */
 exports.filter = function(source,operator,options) {
+	// Capture errors
+	try{
 	// Declare all vars
 	var matches,parent,subFilter,value,variable,
 		// Default variable
@@ -72,6 +74,8 @@ exports.filter = function(source,operator,options) {
 	subFilter = operator.operand || defaultFilter;
 	// Loop input titles
 	source(function(tiddler,title) {
+		// Capture errors for source function
+		try {
 		var filter = subFilter;
 		// Got a variable and a parent widget?
 		if(parent) {
@@ -114,6 +118,11 @@ exports.filter = function(source,operator,options) {
 				});
 			}
 		}
+		// Catch errors for source function
+		} catch(e) {
+			// Pass filter to outer error handler
+			throw "can't evaluate subfilter `" + filter + "`";
+		}
 	});
 	// Value was remembered and we got a parent?
 	if(value !== null) {
@@ -134,6 +143,11 @@ exports.filter = function(source,operator,options) {
 	}
 	// Return matches
 	return results;
+	// Catch errors
+	} catch (e) {
+		// Return error
+		return ["filter error: " + e];
+	}
 };
 
 })();

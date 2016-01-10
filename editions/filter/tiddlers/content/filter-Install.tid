@@ -10,6 +10,8 @@ type: text/vnd.tiddlywiki
 
 !! Version History
 
+; 0.5.7 / 2017-01-10
+: now reports back on any (fatal) filter errors
 ; 0.5.6 / 2016-01-08
 : variable placeholders for use anywhere via `%variable-name%`
 ; 0.5.5 / 2015-12-29
