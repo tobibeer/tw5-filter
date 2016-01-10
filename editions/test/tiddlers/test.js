@@ -138,6 +138,16 @@ describe("test filter filter", function() {
 			"A B C +[filter:$all<linksOfBacklinks>]"
 		,fakeWidget).join(",")).toBe("A,B,C");
 	});
+	it("variable test", function() {
+		expect(wiki.filterTiddlers(
+			"A +[filter[%inputTitle% X%currentTiddler%X]]"
+		,fakeWidget).join(",")).toBe("A XAX");
+	});
+	it("should return error", function() {
+		expect(wiki.filterTiddlers(
+			"[[$:/[]] +[filter[%inputTitle%]]"
+		,fakeWidget).join(",")).toBe("Filter error: Missing [ in filter expression");
+	});
 });
 
 })();
