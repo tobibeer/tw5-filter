@@ -141,7 +141,7 @@ describe("test filter filter", function() {
 	it("variable test", function() {
 		expect(wiki.filterTiddlers(
 			"A +[filter[%inputTitle% X%currentTiddler%X]]"
-		,fakeWidget).join(",")).toBe("A XAX");
+		,fakeWidget).join(",")).toBe("A,XAX");
 	});
 	it("should return error", function() {
 		expect(wiki.filterTiddlers(
